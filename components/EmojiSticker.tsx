@@ -1,4 +1,3 @@
-import { View } from "react-native";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -16,9 +15,11 @@ interface IProps {
 }
 
 export default function EmojiSticker({ imageSize, stickerSource }: IProps) {
-  const scaleImage = useSharedValue(imageSize);
-  const translateX = useSharedValue(0);
-  const translateY = useSharedValue(0);
+  const scaleImage = useSharedValue<number>(imageSize);
+  const translateX = useSharedValue<number>(0);
+  const translateY = useSharedValue<number>(0);
+
+  console.log("scaleImage", scaleImage);
 
   const doubleTap = Gesture.Tap()
     .numberOfTaps(2)
@@ -34,17 +35,17 @@ export default function EmojiSticker({ imageSize, stickerSource }: IProps) {
     const newX = translateX.value + event.changeX;
     const newY = translateY.value + event.changeY;
 
-    const maxX = IMAGE_WIDTH - imageSize - 15;
-    const maxY = IMAGE_HEIGHT - imageSize - 15;
+    const maxX = IMAGE_WIDTH - scaleImage.value - 15;
+    const maxY = IMAGE_HEIGHT - scaleImage.value - 15;
 
     // Clamp the position to keep the sticker inside the image
     translateX.value = Math.min(
-      Math.max(newX, -5), // Prevent moving left beyond the image
+      Math.max(newX, 0), // Prevent moving left beyond the image
       maxX // Prevent moving right beyond the image
     );
 
     translateY.value = Math.min(
-      Math.max(newY, -5), // Prevent moving up beyond the image
+      Math.max(newY, 0), // Prevent moving up beyond the image
       maxY // Prevent moving down beyond the image
     );
   });
@@ -76,7 +77,7 @@ export default function EmojiSticker({ imageSize, stickerSource }: IProps) {
           containerStyle,
           {
             position: "absolute",
-            top: 30,
+            top: 10,
             left: 10,
           },
         ]}

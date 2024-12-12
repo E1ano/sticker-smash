@@ -109,15 +109,16 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#25292e",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-between",
   },
   imageContainer: {
-    flex: 1,
-    paddingTop: 20,
+    width: 320,
+    height: 440,
+    marginTop: 20,
   },
   footerContainer: {
-    flex: 1 / 3,
     alignItems: "center",
+    marginBottom: 40,
   },
   optionsContainer: {
     position: "absolute",
