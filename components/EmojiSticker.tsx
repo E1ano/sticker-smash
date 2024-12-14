@@ -19,8 +19,6 @@ export default function EmojiSticker({ imageSize, stickerSource }: IProps) {
   const translateX = useSharedValue<number>(0);
   const translateY = useSharedValue<number>(0);
 
-  console.log("scaleImage", scaleImage);
-
   const doubleTap = Gesture.Tap()
     .numberOfTaps(2)
     .onStart(() => {

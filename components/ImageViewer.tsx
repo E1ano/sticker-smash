@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { Platform, StyleSheet } from "react-native";
 import { Image } from "expo-image";
 
 interface IProps {
@@ -16,5 +16,9 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     borderRadius: 18,
+    ...(Platform.OS === "web" && {
+      width: 320, 
+      height: 440,
+    }),
   },
 });
