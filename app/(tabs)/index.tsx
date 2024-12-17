@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { Platform, SafeAreaView, View, StyleSheet } from "react-native";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { captureRef } from "react-native-view-shot";
 
 import * as MediaLibrary from "expo-media-library";
